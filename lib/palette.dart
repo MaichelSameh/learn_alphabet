@@ -9,4 +9,9 @@ class MyPalette {
     Color.fromRGBO(0, 207, 186, 1),
   ];
   static const Color primary_color = Colors.teal;
+  static const LinearGradient gradient = LinearGradient(
+    colors: MyPalette.containers_gradient,
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
 }

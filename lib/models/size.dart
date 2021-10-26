@@ -21,25 +21,19 @@ class Size {
   }
 
   double screenHeight() {
-    if (_screenHeight == null) {
-      _screenHeight = MediaQuery.of(_context).size.height -
-          MediaQuery.of(_context).padding.top;
-    }
+    _screenHeight ??= MediaQuery.of(_context).size.height -
+        MediaQuery.of(_context).padding.top;
     return _screenHeight ?? 1;
   }
 
   double screenWidth() {
-    if (_screenWidth == null) _screenWidth = MediaQuery.of(_context).size.width;
+    _screenWidth ??= MediaQuery.of(_context).size.width;
     return _screenWidth ?? 1;
   }
 
   double font(double fontSize) {
-    if (_screenWidth == null) {
-      _screenWidth = MediaQuery.of(_context).size.width;
-    }
-    if (_screenHeight == null) {
-      _screenHeight = MediaQuery.of(_context).size.width;
-    }
+    _screenWidth ??= MediaQuery.of(_context).size.width;
+    _screenHeight ??= MediaQuery.of(_context).size.width;
     double screenwidth =
         ((screenHeight() > screenWidth()) ? screenWidth() : screenHeight());
     double screenheight =
@@ -66,7 +60,7 @@ class Size {
       required double radius,
       required double maxSpace}) {
     int space = _space(dashNumber, maxSpace, radius);
-    double result = _cicumference(radius) - (space * dashNumber);
+    double result = _circumference(radius) - (space * dashNumber);
     return [result ~/ dashNumber, space];
   }
 
@@ -74,11 +68,11 @@ class Size {
     max = height(max);
     if (number == 1) {
       return 0;
-    } else if ((number * max) < _cicumference(radius) / 3) {
+    } else if ((number * max) < _circumference(radius) / 3) {
       return max.toInt();
     } else {
       int temp = 1;
-      while ((max / temp) * number > (_cicumference(radius) / 3)) {
+      while ((max / temp) * number > (_circumference(radius) / 3)) {
         ++temp;
       }
       double result = (max / temp);
@@ -86,7 +80,7 @@ class Size {
     }
   }
 
-  double _cicumference(double radius) {
+  double _circumference(double radius) {
     double result = height(radius) * 2 * pi;
     return result;
   }
