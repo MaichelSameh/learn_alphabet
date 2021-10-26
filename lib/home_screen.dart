@@ -62,24 +62,16 @@ class HomeScreen extends StatelessWidget {
                     Navigator.pushNamed(context, lang.route);
                   },
                   child: Container(
+                    alignment: Alignment.center,
                     height: _size.height(200),
                     margin: EdgeInsets.symmetric(vertical: _size.height(15)),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(_size.width(15)),
                       gradient: MyPalette.gradient,
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          lang.title,
-                          style: Theme.of(context).textTheme.headline2,
-                        ),
-                        Text(
-                          lang.flag,
-                          style: Theme.of(context).textTheme.headline2,
-                        ),
-                      ],
+                    child: Text(
+                      lang.title,
+                      style: Theme.of(context).textTheme.headline2,
                     ),
                   ),
                 ),
