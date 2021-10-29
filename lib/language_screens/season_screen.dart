@@ -30,19 +30,24 @@ class SeasonScreen extends StatelessWidget {
           horizontal: _size.width(20),
         ),
         children:
-            (Languages.languages[languageIndex]["numbers"] as List<String>)
+            (Languages.languages[languageIndex]["seasons"] as List<String>)
                 .map<Widget>(
-                  (season) => Container(
-                    decoration: BoxDecoration(
-                      gradient: MyPalette.gradient,
-                      borderRadius: BorderRadius.circular(
-                        _size.width(25),
+                  (season) => GestureDetector(
+                    onTap: () {
+                      Languages.playAudio(season);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: MyPalette.gradient,
+                        borderRadius: BorderRadius.circular(
+                          _size.width(25),
+                        ),
                       ),
-                    ),
-                    child: Center(
-                      child: Text(
-                        season,
-                        style: Theme.of(context).textTheme.bodyText1,
+                      child: Center(
+                        child: Text(
+                          season,
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
                       ),
                     ),
                   ),

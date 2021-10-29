@@ -32,17 +32,22 @@ class AlphabetScreen extends StatelessWidget {
           ),
           children: Languages.languages[languageIndex]["alphabet"]
               .map<Widget>(
-                (letter) => Container(
-                  decoration: BoxDecoration(
-                    gradient: MyPalette.gradient,
-                    borderRadius: BorderRadius.circular(
-                      _size.width(25),
+                (letter) => GestureDetector(
+                  onTap: () {
+                    Languages.playAudio(letter);
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: MyPalette.gradient,
+                      borderRadius: BorderRadius.circular(
+                        _size.width(25),
+                      ),
                     ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      letter,
-                      style: Theme.of(context).textTheme.bodyText1,
+                    child: Center(
+                      child: Text(
+                        letter,
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
                     ),
                   ),
                 ),

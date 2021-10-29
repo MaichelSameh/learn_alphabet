@@ -26,21 +26,25 @@ class _DaysAndMonthsScreenState extends State<DaysAndMonthsScreen> {
         ),
       ),
       body: GridView(
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: _size.width(200),
-          childAspectRatio: _size.width(200) / _size.height(150),
-          crossAxisSpacing: _size.width(20),
-          mainAxisExtent: _size.height(150),
-          mainAxisSpacing: _size.height(20),
-        ),
-        padding: EdgeInsets.symmetric(
-          vertical: _size.height(20),
-          horizontal: _size.width(20),
-        ),
-        children: isDay
-            ? (Languages.languages[languageIndex]["days"] as List<String>)
-                .map<Widget>(
-                  (day) => Container(
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: _size.width(200),
+            childAspectRatio: _size.width(200) / _size.height(150),
+            crossAxisSpacing: _size.width(20),
+            mainAxisExtent: _size.height(150),
+            mainAxisSpacing: _size.height(20),
+          ),
+          padding: EdgeInsets.symmetric(
+            vertical: _size.height(20),
+            horizontal: _size.width(20),
+          ),
+          children: (Languages.languages[languageIndex]
+                  [isDay ? "days" : "months"] as List<String>)
+              .map<Widget>(
+                (day) => GestureDetector(
+                  onTap: () {
+                    Languages.playAudio(day);
+                  },
+                  child: Container(
                     decoration: BoxDecoration(
                       gradient: MyPalette.gradient,
                       borderRadius: BorderRadius.circular(
@@ -54,27 +58,9 @@ class _DaysAndMonthsScreenState extends State<DaysAndMonthsScreen> {
                       ),
                     ),
                   ),
-                )
-                .toList()
-            : (Languages.languages[languageIndex]["months"] as List<String>)
-                .map<Widget>(
-                  (month) => Container(
-                    decoration: BoxDecoration(
-                      gradient: MyPalette.gradient,
-                      borderRadius: BorderRadius.circular(
-                        _size.width(25),
-                      ),
-                    ),
-                    child: Center(
-                      child: Text(
-                        month,
-                        style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                    ),
-                  ),
-                )
-                .toList(),
-      ),
+                ),
+              )
+              .toList()),
       bottomNavigationBar: Container(
         margin: EdgeInsets.only(top: _size.height(10)),
         height: _size.height(70),
@@ -90,6 +76,9 @@ class _DaysAndMonthsScreenState extends State<DaysAndMonthsScreen> {
           children: [
             GestureDetector(
               onTap: () {
+                Languages.playAudio(
+                  Languages.languages[languageIndex]["day"],
+                );
                 setState(() {
                   isDay = true;
                 });
@@ -98,7 +87,7 @@ class _DaysAndMonthsScreenState extends State<DaysAndMonthsScreen> {
                 alignment: Alignment.center,
                 width: _size.screenWidth() / 2,
                 child: Text(
-                  "Days",
+                  Languages.languages[languageIndex]["day"],
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(
                         color: isDay ? Colors.black45 : Colors.white,
                       ),
@@ -107,6 +96,8 @@ class _DaysAndMonthsScreenState extends State<DaysAndMonthsScreen> {
             ),
             GestureDetector(
               onTap: () {
+                Languages.playAudio(
+                    Languages.languages[languageIndex]["month"]);
                 setState(() {
                   isDay = false;
                 });
@@ -115,7 +106,7 @@ class _DaysAndMonthsScreenState extends State<DaysAndMonthsScreen> {
                 alignment: Alignment.center,
                 width: _size.screenWidth() / 2,
                 child: Text(
-                  "Months",
+                  Languages.languages[languageIndex]["month"],
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(
                         color: !isDay ? Colors.black45 : Colors.white,
                       ),

@@ -1,6 +1,9 @@
+import 'package:flutter_tts/flutter_tts.dart';
+
 import 'language_info.dart';
 
 class Languages {
+  // ignore: non_constant_identifier_names
   static final List<LanguageInfo> supported_languages = [
     LanguageInfo(
       countryCode: "US",
@@ -16,14 +19,14 @@ class Languages {
     ),
     LanguageInfo(
       countryCode: "BN",
-      languageCode: "bn",
+      languageCode: "ben",
       title: "বর্ণমালা",
       flag: "🇧🇩",
     ),
     LanguageInfo(
       countryCode: "IN",
       languageCode: "hi",
-      title: "Hindi",
+      title: "हिंदी",
       flag: "🇮🇳",
     ),
   ];
@@ -35,6 +38,8 @@ class Languages {
       List<String> months = [];
       List<String> numbers = [];
       List<String> seasons = [];
+      String day = "";
+      String month = "";
       Map<String, String> arguments = {};
       switch (language.languageCode) {
         case "en":
@@ -113,6 +118,8 @@ class Languages {
             "Spring",
             "Autumn",
           ];
+          day = "Days";
+          month = "Months";
           break;
         case "ar":
           alphabet = [
@@ -192,8 +199,10 @@ class Languages {
             "الربيع",
             "الخريف",
           ];
+          day = "أيام";
+          month = "شهور";
           break;
-        case "bn":
+        case "ben":
           alphabet = [
             'ঀ',
             'ঁ',
@@ -336,6 +345,8 @@ class Languages {
             "বসন্ত",
             "শরৎ",
           ];
+          day = "দিন";
+          month = "মাস";
           break;
         case "hi":
           alphabet = [
@@ -509,6 +520,8 @@ class Languages {
             "वसंत",
             "पतझड़",
           ];
+          day = "दिन";
+          month = "महीने";
           break;
       }
       return {
@@ -519,7 +532,19 @@ class Languages {
         "numbers": numbers,
         "seasons": seasons,
         "arguments": arguments,
+        "day": day,
+        "month": month,
       };
     }).toList();
+  }
+
+  static Future<void> playAudio(String word, [String? languageCode]) async {
+    FlutterTts flutterTts = FlutterTts();
+    if (languageCode != null) {
+      flutterTts.setLanguage(languageCode);
+    }
+
+    await flutterTts.stop();
+    await flutterTts.speak(word);
   }
 }

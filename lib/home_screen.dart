@@ -26,6 +26,7 @@ class HomeScreen extends StatelessWidget {
               .map<Widget>(
                 (lang) => GestureDetector(
                   onTap: () {
+                    Languages.playAudio(lang.title, lang.languageCode);
                     Navigator.pushNamed(
                       context,
                       LanguageHomeScreen.route_name,

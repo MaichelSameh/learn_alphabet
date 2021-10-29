@@ -31,17 +31,22 @@ class NumbersScreen extends StatelessWidget {
         children:
             (Languages.languages[languageIndex]["numbers"] as List<String>)
                 .map<Widget>(
-                  (number) => Container(
-                    decoration: BoxDecoration(
-                      gradient: MyPalette.gradient,
-                      borderRadius: BorderRadius.circular(
-                        _size.width(25),
+                  (number) => GestureDetector(
+                    onTap: () {
+                      Languages.playAudio(number);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: MyPalette.gradient,
+                        borderRadius: BorderRadius.circular(
+                          _size.width(25),
+                        ),
                       ),
-                    ),
-                    child: Center(
-                      child: Text(
-                        number,
-                        style: Theme.of(context).textTheme.bodyText1,
+                      child: Center(
+                        child: Text(
+                          number,
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
                       ),
                     ),
                   ),
