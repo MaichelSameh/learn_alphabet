@@ -24,11 +24,17 @@ class Languages {
       flag: "🇧🇩",
     ),
     LanguageInfo(
-      countryCode: "IN",
-      languageCode: "hi",
-      title: "हिंदी",
-      flag: "🇮🇳",
+      countryCode: "IT",
+      languageCode: "it",
+      title: "Italiano",
+      flag: "🇮🇹",
     ),
+    // LanguageInfo(
+    //   countryCode: "IN",
+    //   languageCode: "hi",
+    //   title: "हिंदी",
+    //   flag: "🇮🇳",
+    // ),
   ];
 
   static List<Map<String, dynamic>> get languages {
@@ -120,6 +126,85 @@ class Languages {
           ];
           day = "Days";
           month = "Months";
+          break;
+        case "it":
+          alphabet = [
+            'A',
+            'B',
+            'C',
+            'D',
+            'E',
+            'F',
+            'G',
+            'H',
+            'I',
+            'J',
+            'K',
+            'L',
+            'M',
+            'N',
+            'O',
+            'P',
+            'Q',
+            'R',
+            'S',
+            'T',
+            'U',
+            'V',
+            'W',
+            'X',
+            'Y',
+            'Z',
+          ];
+          days = [
+            "lunedì",
+            "Martedì",
+            "mercoledì",
+            "giovedi",
+            "venerdì",
+            "Sabato",
+            "Domenica",
+          ];
+          months = [
+            "Gennaio",
+            "Febbraio",
+            "Marzo",
+            "Aprile",
+            "Maggio",
+            "Giugno",
+            "Luglio",
+            "Agosto",
+            "Settembre",
+            "Ottobre",
+            "Novembre",
+            "Dicembre",
+          ];
+          arguments = {
+            "alphabet": "Alfabeto",
+            "days_and_months": "Giorni e Mesi",
+            "numbers": "Numeri",
+            "seasons": "Le stagioni",
+          };
+          numbers = [
+            "uno",
+            "Due",
+            "Tre",
+            "Quattro",
+            "Cinque",
+            "Sei",
+            "Sette",
+            "Otto",
+            "Nove",
+            "Dieci",
+          ];
+          seasons = [
+            "Estate",
+            "Inverno",
+            "Primavera",
+            "Autunno",
+          ];
+          day = "Giorni";
+          month = "Mesi";
           break;
         case "ar":
           alphabet = [
