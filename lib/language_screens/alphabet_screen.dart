@@ -1,49 +1,22 @@
 import 'package:flutter/material.dart';
 
-import '../palette.dart';
+import '../models/languages.dart';
 import '../models/size.dart';
+import '../palette.dart';
 
-class ArabicAlphabetScreen extends StatelessWidget {
+class AlphabetScreen extends StatelessWidget {
   // ignore: constant_identifier_names
-  static const String route_name = "arabic_alphabet_screen";
-  ArabicAlphabetScreen({Key? key}) : super(key: key);
+  static const String route_name = "alphabet_screen";
+  const AlphabetScreen({Key? key}) : super(key: key);
 
-  final List<String> letters = [
-    'ا',
-    'ب',
-    'ت',
-    'ث',
-    'ج',
-    'ح',
-    'خ',
-    'د',
-    'ذ',
-    'ر',
-    'ز',
-    'س',
-    'ش',
-    'ص',
-    'ض',
-    'ط',
-    'ظ',
-    'ع',
-    'غ',
-    'ف',
-    'ق',
-    'ك',
-    'ل',
-    'م',
-    'ن',
-    'ه',
-    'و',
-    'ي',
-  ];
   @override
   Widget build(BuildContext context) {
+    int languageIndex = ModalRoute.of(context)!.settings.arguments as int;
     Size _size = Size(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("الحروف الأبجدية"),
+        title:
+            Text(Languages.languages[languageIndex]["arguments"]["alphabet"]),
       ),
       body: GridView(
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
@@ -57,7 +30,7 @@ class ArabicAlphabetScreen extends StatelessWidget {
             vertical: _size.height(20),
             horizontal: _size.width(20),
           ),
-          children: letters
+          children: Languages.languages[languageIndex]["alphabet"]
               .map<Widget>(
                 (letter) => Container(
                   decoration: BoxDecoration(

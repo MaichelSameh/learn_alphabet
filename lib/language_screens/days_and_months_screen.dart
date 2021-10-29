@@ -1,52 +1,29 @@
 import 'package:flutter/material.dart';
 
+import '../models/languages.dart';
 import '../models/size.dart';
 import '../palette.dart';
 
-class EnglishDaysAndMonthsScreen extends StatefulWidget {
+class DaysAndMonthsScreen extends StatefulWidget {
   // ignore: constant_identifier_names
-  static const String route_name = "english_days_and_months_screen";
-  const EnglishDaysAndMonthsScreen({Key? key}) : super(key: key);
+  static const String route_name = "days_and_months_screen";
+  const DaysAndMonthsScreen({Key? key}) : super(key: key);
 
   @override
-  State<EnglishDaysAndMonthsScreen> createState() =>
-      _EnglishDaysAndMonthsScreenState();
+  State<DaysAndMonthsScreen> createState() => _DaysAndMonthsScreenState();
 }
 
-class _EnglishDaysAndMonthsScreenState
-    extends State<EnglishDaysAndMonthsScreen> {
-  final List<String> days = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ];
-
-  final List<String> months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
+class _DaysAndMonthsScreenState extends State<DaysAndMonthsScreen> {
   bool isDay = true;
   @override
   Widget build(BuildContext context) {
+    int languageIndex = ModalRoute.of(context)!.settings.arguments as int;
     Size _size = Size(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Days and Months"),
+        title: Text(
+          Languages.languages[languageIndex]["arguments"]["days_and_months"],
+        ),
       ),
       body: GridView(
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
@@ -61,7 +38,7 @@ class _EnglishDaysAndMonthsScreenState
           horizontal: _size.width(20),
         ),
         children: isDay
-            ? days
+            ? (Languages.languages[languageIndex]["days"] as List<String>)
                 .map<Widget>(
                   (day) => Container(
                     decoration: BoxDecoration(
@@ -79,7 +56,7 @@ class _EnglishDaysAndMonthsScreenState
                   ),
                 )
                 .toList()
-            : months
+            : (Languages.languages[languageIndex]["months"] as List<String>)
                 .map<Widget>(
                   (month) => Container(
                     decoration: BoxDecoration(

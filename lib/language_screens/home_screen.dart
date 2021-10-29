@@ -1,37 +1,47 @@
 import 'package:flutter/material.dart';
 
-import '../models/size.dart';
-import '../palette.dart';
-import 'english_alphabet_screen.dart';
-import 'english_days_and_months_screen.dart';
-import 'english_numbers_screen.dart';
-import 'english_season_screen.dart';
+import '../models/languages.dart';
+import '../../models/size.dart';
+import '../../palette.dart';
+import 'alphabet_screen.dart';
+import 'days_and_months_screen.dart';
+import 'numbers_screen.dart';
+import 'season_screen.dart';
 
-class EnglishHomeScreen extends StatelessWidget {
+class LanguageHomeScreen extends StatelessWidget {
   // ignore: constant_identifier_names
-  static const String route_name = "english_home_screen";
-  EnglishHomeScreen({Key? key}) : super(key: key);
-  final Map<String, String> arguments = {
-    "Alphabet": EnglishAlphabetScreen.route_name,
-    "Days and Months": EnglishDaysAndMonthsScreen.route_name,
-    "Numbers": EnglishNumbersScreen.route_name,
-    "Seasons": EnglishSeasonScreen.route_name,
-  };
+  static const String route_name = "language_home_screen";
+  const LanguageHomeScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    int languageIndex = ModalRoute.of(context)!.settings.arguments as int;
     Size _size = Size(context);
+    Map<String, String> arguments =
+        Languages.languages[languageIndex]["arguments"] as Map<String, String>;
     return Scaffold(
-      appBar: AppBar(title: const Text("English")),
-      body: ListView(
+        appBar: AppBar(
+          title: Text(Languages.languages[languageIndex]["title"]),
+        ),
+        body: ListView(
           padding: EdgeInsets.symmetric(
             horizontal: _size.width(15),
             vertical: _size.height(15),
           ),
           children: arguments.keys
               .map<Widget>(
-                (argument) => GestureDetector(
+                (key) => GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, arguments[argument]!);
+                    Navigator.pushNamed(
+                      context,
+                      key == "alphabet"
+                          ? AlphabetScreen.route_name
+                          : key == "days_and_months"
+                              ? DaysAndMonthsScreen.route_name
+                              : key == "numbers"
+                                  ? NumbersScreen.route_name
+                                  : SeasonScreen.route_name,
+                      arguments: languageIndex,
+                    );
                   },
                   child: Container(
                     height: _size.height(200),
@@ -50,13 +60,13 @@ class EnglishHomeScreen extends StatelessWidget {
                       ],
                     ),
                     child: Text(
-                      argument,
+                      arguments[key]!,
                       style: Theme.of(context).textTheme.headline2,
                     ),
                   ),
                 ),
               )
-              .toList()),
-    );
+              .toList(),
+        ));
   }
 }
