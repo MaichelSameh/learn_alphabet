@@ -2,26 +2,26 @@ import 'package:flutter/material.dart';
 
 import '../models/size.dart';
 import '../palette.dart';
-import '../english/english_alphabet_screen.dart';
-import '../english/english_days_and_months_screen.dart';
-import '../english/english_numbers_screen.dart';
-import '../english/english_season_screen.dart';
+import 'hindi_alphabet_screen.dart';
+import 'hindi_days_and_months_screen.dart';
+import 'hindi_numbers_screen.dart';
+import 'hindi_season_screen.dart';
 
 class HindiHomeScreen extends StatelessWidget {
   // ignore: constant_identifier_names
   static const String route_name = "hindi_home_screen";
   HindiHomeScreen({Key? key}) : super(key: key);
   final Map<String, String> arguments = {
-    "Alphabet": EnglishAlphabetScreen.route_name,
-    "Days and Months": EnglishDaysAndMonthsScreen.route_name,
-    "Numbers": EnglishNumbersScreen.route_name,
-    "Seasons": EnglishSeasonScreen.route_name,
+    "वर्णमाला": HindiAlphabetScreen.route_name,
+    "दिन और महीने": HindiDaysAndMonthsScreen.route_name,
+    "नंबर": HindiNumbersScreen.route_name,
+    "मौसम के": HindiSeasonScreen.route_name,
   };
   @override
   Widget build(BuildContext context) {
     Size _size = Size(context);
     return Scaffold(
-      appBar: AppBar(title: const Text("English")),
+      appBar: AppBar(title: const Text("हिंदी")),
       body: ListView(
           padding: EdgeInsets.symmetric(
             horizontal: _size.width(15),

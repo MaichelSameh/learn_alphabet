@@ -2,26 +2,26 @@ import 'package:flutter/material.dart';
 
 import '../models/size.dart';
 import '../palette.dart';
-import '../english/english_alphabet_screen.dart';
-import '../english/english_days_and_months_screen.dart';
-import '../english/english_numbers_screen.dart';
-import '../english/english_season_screen.dart';
+import 'arabic_alphabet_screen.dart';
+import 'arabic_days_and_months_screen.dart';
+import 'arabic_numbers_screen.dart';
+import 'arabic_season_screen.dart';
 
 class ArabicHomeScreen extends StatelessWidget {
   // ignore: constant_identifier_names
   static const String route_name = "arabic_home_screen";
   ArabicHomeScreen({Key? key}) : super(key: key);
   final Map<String, String> arguments = {
-    "Alphabet": EnglishAlphabetScreen.route_name,
-    "Days and Months": EnglishDaysAndMonthsScreen.route_name,
-    "Numbers": EnglishNumbersScreen.route_name,
-    "Seasons": EnglishSeasonScreen.route_name,
+    "الحروف الأبجدية": ArabicAlphabetScreen.route_name,
+    "أيام و شهور": ArabicDaysAndMonthsScreen.route_name,
+    "الارقام": ArabicNumbersScreen.route_name,
+    "فصول السنة": ArabicSeasonScreen.route_name,
   };
   @override
   Widget build(BuildContext context) {
     Size _size = Size(context);
     return Scaffold(
-      appBar: AppBar(title: const Text("English")),
+      appBar: AppBar(title: const Text("العربية")),
       body: ListView(
           padding: EdgeInsets.symmetric(
             horizontal: _size.width(15),

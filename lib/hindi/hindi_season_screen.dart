@@ -3,28 +3,24 @@ import 'package:flutter/material.dart';
 import '../models/size.dart';
 import '../palette.dart';
 
-class EnglishNumbersScreen extends StatelessWidget {
+class HindiSeasonScreen extends StatelessWidget {
   // ignore: constant_identifier_names
-  static const String route_name = "english_numbers_screen";
-  EnglishNumbersScreen({Key? key}) : super(key: key);
-  final List<String> numbers = [
-    "one",
-    "two",
-    "three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "eight",
-    "nine",
-    "ten",
+  static const String route_name = "hindi_season_screen";
+  HindiSeasonScreen({Key? key}) : super(key: key);
+
+  final List<String> seasons = [
+    "ग्रीष्म ऋतु",
+    "सर्दी",
+    "वसंत",
+    "पतझड़",
   ];
+
   @override
   Widget build(BuildContext context) {
     Size _size = Size(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Numbers"),
+        title: const Text("मौसम के"),
       ),
       body: GridView(
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
@@ -38,9 +34,9 @@ class EnglishNumbersScreen extends StatelessWidget {
           vertical: _size.height(20),
           horizontal: _size.width(20),
         ),
-        children: numbers
+        children: seasons
             .map<Widget>(
-              (number) => Container(
+              (season) => Container(
                 decoration: BoxDecoration(
                   gradient: MyPalette.gradient,
                   borderRadius: BorderRadius.circular(
@@ -49,7 +45,7 @@ class EnglishNumbersScreen extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    number,
+                    season,
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),

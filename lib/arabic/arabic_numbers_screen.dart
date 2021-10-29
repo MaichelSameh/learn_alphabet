@@ -3,28 +3,28 @@ import 'package:flutter/material.dart';
 import '../models/size.dart';
 import '../palette.dart';
 
-class EnglishNumbersScreen extends StatelessWidget {
+class ArabicNumbersScreen extends StatelessWidget {
   // ignore: constant_identifier_names
-  static const String route_name = "english_numbers_screen";
-  EnglishNumbersScreen({Key? key}) : super(key: key);
+  static const String route_name = "arabic_numbers_screen";
+  ArabicNumbersScreen({Key? key}) : super(key: key);
   final List<String> numbers = [
-    "one",
-    "two",
-    "three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "eight",
-    "nine",
-    "ten",
+    "واحد",
+    "اثنين",
+    "ثلاثة",
+    "أربعة",
+    "خمسة",
+    "ستة",
+    "سبعة",
+    "ثمانية",
+    "تسع",
+    "عشرة",
   ];
   @override
   Widget build(BuildContext context) {
     Size _size = Size(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Numbers"),
+        title: const Text("الارقام"),
       ),
       body: GridView(
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

@@ -5,7 +5,7 @@ import 'models/language.dart';
 import 'models/size.dart';
 import 'english/english_home_screen.dart';
 import 'arabic/arabic_home_screen.dart';
-import 'Bangla/bangla_home_screen.dart';
+import 'bangla/bangla_home_screen.dart';
 import 'hindi/hindi_home_screen.dart';
 
 class HomeScreen extends StatelessWidget {
